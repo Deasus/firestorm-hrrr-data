@@ -1,0 +1,28 @@
+{
+  "updated": "2026-04-27T16:41:18Z",
+  "schema_version": 1,
+  "regions": {
+    "conus": {
+      "region": "conus",
+      "ok": true,
+      "run": "2026042714z",
+      "shape": [
+        280,
+        630
+      ],
+      "size_mb": 6.19
+    },
+    "alaska": {
+      "region": "alaska",
+      "ok": true,
+      "run": "2026042712z",
+      "shape": [
+        246,
+        586
+      ],
+      "size_mb": 5.27
+    }
+  },
+  "source": "NOAA NOMADS HRRR (via cfgrib + scipy griddata resample)",
+  "pipeline": "https://github.com/Deasus/firestorm-hrrr-data"
+}
