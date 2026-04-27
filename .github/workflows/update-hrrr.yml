@@ -1,0 +1,50 @@
+name: Update HRRR Wind Data
+on:
+  # HRRR CONUS publishes hourly; Alaska every 3h. We run hourly — Alaska
+  # outputs simply repeat for 1-2 runs out of 3 without harm.
+  schedule:
+    - cron: '15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libeccodes-dev
+
+      - name: Install Python dependencies
+        run: pip install numpy scipy xarray cfgrib eccodes
+
+      - name: Fetch and resample HRRR wind
+        run: python fetch_hrrr.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Only commit JSON outputs — never .grib2 or temp files
+          git add data/*.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            git commit -m "Update HRRR wind data — ${TIMESTAMP}"
+            git pull --rebase origin main || true
+            git push
+          fi

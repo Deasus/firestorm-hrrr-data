@@ -1,0 +1,8 @@
+# cfgrib leaves index files alongside the GRIB2 data it parses
+data/*.idx
+data/*.grib2
+
+# Python artifacts
+__pycache__/
+*.pyc
+.DS_Store
