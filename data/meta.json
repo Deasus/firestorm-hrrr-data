@@ -1,26 +1,26 @@
 {
-  "updated": "2026-04-29T06:36:31Z",
+  "updated": "2026-04-29T09:23:35Z",
   "schema_version": 1,
   "regions": {
     "conus": {
       "region": "conus",
       "ok": true,
-      "run": "2026042904z",
+      "run": "2026042907z",
       "shape": [
         280,
         630
       ],
-      "size_mb": 6.18
+      "size_mb": 6.19
     },
     "alaska": {
       "region": "alaska",
       "ok": true,
-      "run": "2026042903z",
+      "run": "2026042906z",
       "shape": [
         246,
         586
       ],
-      "size_mb": 5.32
+      "size_mb": 5.21
     }
   },
   "source": "NOAA NOMADS HRRR (via cfgrib + scipy griddata resample)",
