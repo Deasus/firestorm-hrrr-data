@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-30T14:23:49Z",
+  "updated": "2026-04-30T16:46:17Z",
   "schema_version": 1,
   "regions": {
     "conus": {
       "region": "conus",
       "ok": true,
-      "run": "2026043012z",
+      "run": "2026043014z",
       "shape": [
         280,
         630
       ],
-      "size_mb": 6.21
+      "size_mb": 6.19
     },
     "alaska": {
       "region": "alaska",
