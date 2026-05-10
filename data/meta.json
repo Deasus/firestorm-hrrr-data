@@ -1,11 +1,11 @@
 {
-  "updated": "2026-05-10T09:02:23Z",
+  "updated": "2026-05-10T10:35:50Z",
   "schema_version": 1,
   "regions": {
     "conus": {
       "region": "conus",
       "ok": true,
-      "run": "2026051007z",
+      "run": "2026051008z",
       "shape": [
         280,
         630
