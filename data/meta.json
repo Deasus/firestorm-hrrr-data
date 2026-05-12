@@ -1,28 +1,75 @@
 {
-  "updated": "2026-05-12T14:53:28Z",
-  "schema_version": 1,
+  "updated": "2026-05-12T14:58:18Z",
+  "schema_version": 2,
+  "fields": {
+    "wind": {
+      "vars": [
+        "u10",
+        "v10"
+      ],
+      "level": "10 m above ground",
+      "units": "m/s"
+    },
+    "thermo": {
+      "vars": [
+        "t2m",
+        "r2"
+      ],
+      "level": "2 m above ground",
+      "units": [
+        "K",
+        "%"
+      ]
+    }
+  },
   "regions": {
     "conus": {
       "region": "conus",
-      "ok": true,
-      "run": "2026051212z",
-      "shape": [
-        280,
-        630
-      ],
-      "size_mb": 6.2
+      "wind": {
+        "ok": true,
+        "kind": "wind",
+        "run": "2026051212z",
+        "shape": [
+          280,
+          630
+        ],
+        "size_mb": 6.2
+      },
+      "thermo": {
+        "ok": true,
+        "kind": "thermo",
+        "run": "2026051212z",
+        "shape": [
+          280,
+          630
+        ],
+        "size_mb": 5.74
+      }
     },
     "alaska": {
       "region": "alaska",
-      "ok": true,
-      "run": "2026051212z",
-      "shape": [
-        246,
-        586
-      ],
-      "size_mb": 5.01
+      "wind": {
+        "ok": true,
+        "kind": "wind",
+        "run": "2026051212z",
+        "shape": [
+          246,
+          586
+        ],
+        "size_mb": 5.01
+      },
+      "thermo": {
+        "ok": true,
+        "kind": "thermo",
+        "run": "2026051212z",
+        "shape": [
+          246,
+          586
+        ],
+        "size_mb": 4.62
+      }
     }
   },
-  "source": "NOAA NOMADS HRRR (via cfgrib + scipy griddata resample)",
+  "source": "NOAA NOMADS HRRR (cfgrib + scipy griddata resample)",
   "pipeline": "https://github.com/Deasus/firestorm-hrrr-data"
 }
