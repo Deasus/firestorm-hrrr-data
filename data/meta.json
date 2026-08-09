@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T02:27:53Z",
+  "updated": "2026-08-09T04:35:18Z",
   "schema_version": 2,
   "fields": {
     "wind": {
@@ -28,22 +28,22 @@
       "wind": {
         "ok": true,
         "kind": "wind",
-        "run": "2026080900z",
+        "run": "2026080902z",
         "shape": [
           280,
           630
         ],
-        "size_mb": 6.15
+        "size_mb": 6.17
       },
       "thermo": {
         "ok": true,
         "kind": "thermo",
-        "run": "2026080900z",
+        "run": "2026080902z",
         "shape": [
           280,
           630
         ],
-        "size_mb": 5.81
+        "size_mb": 5.82
       }
     },
     "alaska": {
