@@ -41,4 +41,4 @@ Extending to regional HRRR-equivalents globally would require separate
 pipelines for each domain (different GRIB conventions, variable names,
 projections). Deferred. Current global fallback remains GFS 25km.
 
-See `Deasus/firestorm` CHANGELOG for FIRESTORM main-app deployment status.
+System overview: [firestorm-platform](https://github.com/Deasus/firestorm-platform). Main-app deployment status is tracked in the private application repo.
