@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T09:01:05Z",
+  "updated": "2026-08-29T14:27:54Z",
   "schema_version": 2,
   "fields": {
     "wind": {
@@ -28,22 +28,22 @@
       "wind": {
         "ok": true,
         "kind": "wind",
-        "run": "2026082906z",
+        "run": "2026082912z",
         "shape": [
           280,
           630
         ],
-        "size_mb": 6.19
+        "size_mb": 6.2
       },
       "thermo": {
         "ok": true,
         "kind": "thermo",
-        "run": "2026082906z",
+        "run": "2026082912z",
         "shape": [
           280,
           630
         ],
-        "size_mb": 5.82
+        "size_mb": 5.78
       }
     },
     "alaska": {
@@ -51,22 +51,22 @@
       "wind": {
         "ok": true,
         "kind": "wind",
-        "run": "2026082906z",
+        "run": "2026082912z",
         "shape": [
           246,
           586
         ],
-        "size_mb": 5.21
+        "size_mb": 4.45
       },
       "thermo": {
         "ok": true,
         "kind": "thermo",
-        "run": "2026082906z",
+        "run": "2026082912z",
         "shape": [
           246,
           586
         ],
-        "size_mb": 4.68
+        "size_mb": 4.25
       }
     }
   },
