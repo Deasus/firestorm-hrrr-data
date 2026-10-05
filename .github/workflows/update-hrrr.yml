@@ -1,4 +1,10 @@
 name: Update HRRR Wind Data
+
+# CADENCE (2026-10-05): a self-re-dispatching chain, the pattern firestorm-goes-fire-data
+# proved. GitHub's `schedule` is best-effort: measured 2026-10-05, this cron ran only ~5
+# times a day (24/day designed). Each run queues its successor FIRST (the concurrency
+# group holds it until this run ends, so a failed or cancelled run cannot break the chain),
+# does its work, then waits out the rest of a 60-min slot. The cron is now only a dead-man restart.
 on:
   # HRRR CONUS publishes hourly; Alaska every 3h. We run hourly — Alaska
   # outputs simply repeat for 1-2 runs out of 3 without harm.
@@ -8,14 +14,27 @@ on:
 
 permissions:
   contents: write
+  actions: write                 # self re-dispatch
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    concurrency:
+      group: update-hrrr
+      cancel-in-progress: false
+    timeout-minutes: 75
     steps:
+      - name: mark the slot start
+        run: echo "SLOT_START=$(date +%s)" >> "$GITHUB_ENV"
+
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: queue the next run (first, so this run cannot break the chain)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run update-hrrr.yml --ref main || echo "::warning::re-dispatch failed; the schedule will restart the chain"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -48,3 +67,9 @@ jobs:
             git pull --rebase origin main || true
             git push
           fi
+
+      - name: wait out the rest of the 60-min slot
+        if: always()
+        run: |
+          left=$(( 3600 - ($(date +%s) - SLOT_START) ))
+          if [ "$left" -gt 0 ]; then echo "sleeping ${left}s to the next slot"; sleep "$left"; fi
